@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultant Timer</title>
+    <script type="text/javascript" src="elm.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    var storedState = localStorage.getItem('elm-todo-save');
+    var startingState = storedState ? JSON.parse(storedState) : null;
+    var app = Elm.Cons.init({ flags: startingState });
+    app.ports.setStorage.subscribe(function(state) {
+        localStorage.setItem('elm-todo-save', JSON.stringify(state));
+    });
+</script>
+
+</body>
+</html>
